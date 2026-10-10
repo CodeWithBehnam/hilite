@@ -17,7 +17,7 @@ Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hili
 - A popup listing this page's highlights; click one to jump to it.
 - A library of every highlight you have made, with search.
 - Export to Markdown or JSON, import JSON back. Undo with Ctrl/Cmd+Z.
-- Never breaks a page: Hilite paints highlights without changing the page's own markup.
+- Never breaks a page: highlights are painted with the CSS Custom Highlight API, so your text is never wrapped in new elements. The only thing Hilite adds to a page is its own small toolbar.
 - Free. No account, no ads, no premium tier, no tracking.
 
 ![Notes and a list for every page](assets/screenshots/03-popup-page-highlights.png)
