@@ -1,7 +1,7 @@
 # Hilite privacy policy
 
-**Effective date:** 2026-10-08
-**Applies to:** Hilite 1.0.0
+**Effective date:** 2026-10-10
+**Applies to:** Hilite 1.0.1
 
 Hilite keeps everything on your device. It has no servers, no accounts and no analytics, and it sends nothing to the developer or to any third party.
 
@@ -10,6 +10,7 @@ Hilite keeps everything on your device. It has no servers, no accounts and no an
 - **Highlights:** the exact text you highlight, a few words either side of it, where it sits on the page, its colour, any note, and when you created or last changed it.
 - **Page addresses and titles:** only for pages that have at least one highlight. Addresses are tidied before storage, with common tracking parameters such as `utm_*` removed.
 - **Settings:** your colours, default colour, toolbar and hover options, and any sites where you have turned Hilite off (hostnames only).
+- **Reminder state:** when Hilite was installed or updated, when you last exported a backup, and whether you dismissed the backup reminder or the review request. It is used only to decide whether to show those two prompts.
 
 When you visit a page, Hilite reads its text on your device only so it can place your highlights. Hilite keeps no list of the pages you visit. A page is recorded only after you highlight something on it, and its record is deleted when its last highlight is removed.
 
@@ -30,6 +31,8 @@ Everything is kept in `chrome.storage.local`, which lives in your browser profil
 
 Nothing, except a file you choose to export. Export creates a Markdown or JSON file that your browser saves where you tell it to. Once saved, that copy is yours and Hilite no longer controls it. Import reads a JSON file you choose, on your device.
 
+The "Report a site" and "Write a review" buttons open a page in a new tab, and "Tell a friend" copies the Chrome Web Store link to your clipboard, only when you click them. "Report a site" opens a GitHub issue form with only the Hilite version filled in. It does not include the page you were on.
+
 ## Deleting your data
 
 - **One highlight:** delete it from the highlight's menu, the popup or the library.
@@ -47,6 +50,7 @@ Nothing, except a file you choose to export. Export creates a Markdown or JSON f
 
 ## Changelog
 
+- 2026-10-10: Hilite 1.0.1 stores local reminder state and adds the "Report a site", "Write a review" and "Tell a friend" buttons. Nothing is sent anywhere.
 - 2026-10-08: First version, for Hilite 1.0.0.
 
 ## Contact

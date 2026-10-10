@@ -51,7 +51,7 @@ Manual install of a release build:
 
 ## Privacy
 
-Hilite stores your highlights, notes, page addresses and settings only in your own browser. It makes no network requests, has no account and no analytics. The full policy is in [PRIVACY.md](PRIVACY.md).
+Hilite stores your highlights, notes, page addresses and settings only in your own browser. It makes no network requests of its own, has no account and no analytics. The full policy is in [PRIVACY.md](PRIVACY.md).
 
 ## Permissions and why
 
@@ -66,4 +66,10 @@ Bug reports and feature requests: [issues](https://github.com/CodeWithBehnam/hil
 
 ## Changelog
 
+- 1.0.1 (2026-10-10):
+  - A backup reminder with one-click export from the popup.
+  - A single, neutral request for a review after real use. You can dismiss it, and it is never repeated.
+  - A "Report a site" link that opens a prefilled GitHub issue. You fill in the page address yourself; Hilite never sends it.
+  - A "Tell a friend" link.
+  - A shorter store summary.
 - 1.0.0 (2026-10-08): first release.
