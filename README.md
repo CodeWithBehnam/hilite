@@ -4,7 +4,7 @@
 
 Hilite is a free Chrome extension for highlighting text on any web page and finding it again. Select text, pick a colour, done. Your highlights come back on every visit, you can add notes, see each page's highlights in the popup, and search everything you have saved in the library. There is no account, no sign-in and no server: everything stays in your browser.
 
-Chrome Web Store: link coming soon.
+Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj)
 
 ![Select text, pick a colour, done](assets/screenshots/01-select-and-highlight.png)
 
@@ -42,7 +42,7 @@ Keyboard shortcuts (Option instead of Alt on macOS; change them at `chrome://ext
 
 ## Install
 
-From the Chrome Web Store: link coming soon.
+From the Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj).
 
 Manual install of a release build:
 
