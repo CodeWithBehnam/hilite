@@ -1,0 +1,29 @@
+name: Feature request
+description: Suggest something Hilite should do.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hilite 1 does not cover PDFs, sync between devices, mobile, sharing, or a direct Notion or Obsidian push. Requests for any of these are welcome. Say how you would use it, because the number of people who ask for something decides what is built next.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the situation, not only the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like Hilite to do?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you do today instead?
+      description: Workarounds, or other tools you use for this.
+    validations:
+      required: false

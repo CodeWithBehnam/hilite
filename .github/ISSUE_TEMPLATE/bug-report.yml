@@ -1,0 +1,51 @@
+name: Bug report
+description: Something in Hilite does not work as described.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. If the problem is that highlights do not come back on one particular site, the "Report a site where highlights fail" form is a better fit.
+
+        Issues here are public. Please do not include personal information or private page addresses.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Describe the problem and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the popup.
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: hilite-version
+    attributes:
+      label: Hilite version
+      description: Shown on the extension card at chrome://extensions.
+      value: "1.0.1"
+    validations:
+      required: true
+  - type: input
+    id: chrome-version
+    attributes:
+      label: Chrome version
+      description: Open chrome://version to find it.
+      placeholder: "154.0.0.0"
+    validations:
+      required: false
+  - type: input
+    id: operating-system
+    attributes:
+      label: Operating system
+      placeholder: macOS, Windows 11, Ubuntu
+    validations:
+      required: false

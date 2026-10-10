@@ -1,0 +1,58 @@
+name: Report a site where highlights fail
+description: Highlights are missing, in the wrong place, or the toolbar did not appear on a page.
+title: "[Site] "
+labels: ["site-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a site. Hilite finds each highlight again from its text and the words around it, so a page that rewrites its text between visits can lose one. Reports like this are how that gets better.
+
+        Issues here are public. Please do not include private page addresses, personal information or the text of private documents.
+  - type: input
+    id: page-address
+    attributes:
+      label: Page address
+      description: Leave this out if it is private.
+      placeholder: https://example.com/article
+    validations:
+      required: false
+  - type: dropdown
+    id: what-happened
+    attributes:
+      label: What happened
+      options:
+        - Highlights missing
+        - Placed on the wrong text
+        - Toolbar did not appear
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What did you do, and what did you see instead? For example, which text you selected and whether you reloaded the page.
+      placeholder: |
+        1. Open the page.
+        2. Select a sentence and click a colour.
+        3. Reload the page.
+        4. The highlight is missing.
+    validations:
+      required: true
+  - type: input
+    id: hilite-version
+    attributes:
+      label: Hilite version
+      description: Shown on the extension card at chrome://extensions.
+      value: "1.0.1"
+    validations:
+      required: true
+  - type: input
+    id: chrome-version
+    attributes:
+      label: Chrome version
+      description: Open chrome://version to find it.
+      placeholder: "154.0.0.0"
+    validations:
+      required: false

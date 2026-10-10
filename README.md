@@ -2,9 +2,15 @@
 
 # Hilite: Web Highlighter & Notes
 
-Hilite is a free Chrome extension for highlighting text on any web page and finding it again. Select text, pick a colour, done. Your highlights come back on every visit, you can add notes, see each page's highlights in the popup, and search everything you have saved in the library. There is no account, no sign-in and no server: everything stays in your browser.
+Hilite is a free Chrome extension for highlighting text on web pages (http and https) and finding it again. Select text, pick a colour, done. Your highlights come back when you revisit a page, you can add notes, see each page's highlights in the popup, and search everything you have saved in the library. There is no account, no sign-in and no server: everything stays in your browser.
 
 Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj)
+
+Website: [codewithbehnam.github.io/hilite](https://codewithbehnam.github.io/hilite/)
+
+![A sentence in an article is selected and highlighted yellow, the note 'Check the 1890 edition' is added, and the Hilite popup then lists it.](assets/demo.gif)
+
+*Select, highlight, add a note. The popup lists it.*
 
 ![Select text, pick a colour, done](assets/screenshots/01-select-and-highlight.png)
 
@@ -12,12 +18,12 @@ Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hili
 
 - One step to highlight: select text and click a colour, or press the shortcut.
 - Six colours, changeable after the fact, readable on light and dark sites.
-- Highlights come back on every visit, including on single-page apps and pages that load content late.
+- Highlights come back when you revisit a page, including on single-page apps and pages that load content late. If a page rewrites its text, a highlight may not come back.
 - Notes on any highlight.
 - A popup listing this page's highlights; click one to jump to it.
 - A library of every highlight you have made, with search.
 - Export to Markdown or JSON, import JSON back. Undo with Ctrl/Cmd+Z.
-- Never breaks a page: highlights are painted with the CSS Custom Highlight API, so your text is never wrapped in new elements. The only thing Hilite adds to a page is its own small toolbar.
+- Highlights are painted with the CSS Custom Highlight API, so your text is not wrapped in new elements. Hilite's own toolbar sits in a separate shadow-DOM element.
 - Free. No account, no ads, no premium tier, no tracking.
 
 ![Notes and a list for every page](assets/screenshots/03-popup-page-highlights.png)
@@ -26,7 +32,7 @@ Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hili
 
 ## How to use it
 
-1. Select any text on a page. A small toolbar appears above it.
+1. Select text on a web page. A small toolbar appears above it.
 2. Click a colour to highlight, or the note button to highlight and add a note straight away.
 3. Click a highlight to change its colour, edit its note, copy the text or delete it.
 4. Open the popup from the toolbar icon to see this page's highlights, or open the library for everything.
@@ -52,6 +58,8 @@ Manual install of a release build:
 ## Privacy
 
 Hilite stores your highlights, notes, page addresses and settings only in your own browser. It makes no network requests of its own, has no account and no analytics. The full policy is in [PRIVACY.md](PRIVACY.md).
+
+The source code is private, so Hilite is free to use but not open source. This repository holds the privacy policy, screenshots, the website and release downloads.
 
 ## Permissions and why
 

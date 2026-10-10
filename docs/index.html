@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilite: free web highlighter for Chrome</title>
+<meta name="description" content="Hilite is a free Chrome highlighter with notes. Highlights come back when you revisit a page. No account, no ads, and your data stays in your browser.">
+<link rel="canonical" href="https://codewithbehnam.github.io/hilite/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBF8F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-128.png" type="image/png" sizes="128x128">
+<link rel="apple-touch-icon" href="assets/icon-128.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hilite">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://codewithbehnam.github.io/hilite/">
+<meta property="og:title" content="Hilite: Web Highlighter &amp; Notes">
+<meta property="og:description" content="A free Chrome extension for highlighting text and adding notes. No account, no ads, no servers. Everything stays in your browser.">
+<meta property="og:image" content="https://codewithbehnam.github.io/hilite/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hilite. Highlights that are still there when you come back. A free Chrome highlighter with no account.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hilite: Web Highlighter &amp; Notes">
+<meta name="twitter:description" content="A free Chrome extension for highlighting text and adding notes. No account, no ads, no servers. Everything stays in your browser.">
+<meta name="twitter:image" content="https://codewithbehnam.github.io/hilite/assets/og.png">
+<meta name="twitter:image:alt" content="Hilite. Highlights that are still there when you come back. A free Chrome highlighter with no account.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Hilite: Web Highlighter & Notes",
+  "alternateName": "Hilite",
+  "description": "A free Chrome extension for highlighting text on web pages and adding notes. Highlights are restored when you revisit a page. No account, no ads, no servers, and no network requests of its own. Everything is stored in chrome.storage.local.",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Chrome",
+  "softwareVersion": "1.0.1",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "url": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
+  "downloadUrl": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
+  "installUrl": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
+  "releaseNotes": "https://github.com/CodeWithBehnam/hilite/releases",
+  "sameAs": ["https://github.com/CodeWithBehnam/hilite", "https://codewithbehnam.github.io/hilite/"],
+  "image": "https://codewithbehnam.github.io/hilite/assets/icon-128.png",
+  "screenshot": [
+    "https://codewithbehnam.github.io/hilite/assets/screenshots/01-select-and-highlight.png",
+    "https://codewithbehnam.github.io/hilite/assets/screenshots/02-highlights-and-notes.png",
+    "https://codewithbehnam.github.io/hilite/assets/screenshots/04-library.png"
+  ],
+  "featureList": [
+    "Six highlight colours, changeable after the fact",
+    "Keyboard shortcut Alt+Shift+H (Option+Shift+H on a Mac)",
+    "Highlights are restored when you revisit a page, including single-page apps and lazy-loaded content",
+    "Notes, recolour, copy and delete from the highlight menu",
+    "Popup listing the current page's highlights",
+    "Library with search across every highlight",
+    "Export to Markdown or JSON, import JSON",
+    "Undo with Ctrl+Z or Cmd+Z",
+    "Highlights stay readable on dark sites, and the popup, Library and options pages follow your system theme",
+    "Highlights painted with the CSS Custom Highlight API, so highlighted text is not wrapped in new elements"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP",
+    "url": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "CodeWithBehnam",
+    "url": "https://github.com/CodeWithBehnam"
+  }
+}
+</script>
+
+<style>
+  :root {
+    --paper: #FBF8F1;
+    --wash: #F4EEDD;
+    --ink: #1B1A17;
+    --muted: #5B574C;
+    --line: #E4DCC8;
+    --marker: #FACC15;
+    --link-line: #A67C00;
+    --stroke: #FACC15;
+    --tint: rgba(250, 204, 21, 0.18);
+    --shadow: 0 1px 2px rgba(27, 26, 23, 0.06), 0 14px 36px rgba(27, 26, 23, 0.10);
+    --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14130F;
+      --wash: #1D1B16;
+      --ink: #F1EDE2;
+      --muted: #B3AD9C;
+      --line: #36332B;
+      --link-line: #FACC15;
+      --stroke: rgba(250, 204, 21, 0.5);
+      --tint: rgba(250, 204, 21, 0.10);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 14px 36px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 1.0625rem/1.6 var(--font); }
+  img { max-width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  section[id] { scroll-margin-top: 1rem; }
+
+  a { color: inherit; text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 0.18em; text-underline-offset: 0.18em; }
+  a:hover { background: var(--marker); color: #1B1A17; text-decoration-color: transparent; }
+  .bare { text-decoration: none; }
+  .bare:hover { background: none; color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  code { font: 0.9em var(--mono); background: var(--wash); border-radius: 4px; padding: 0.1em 0.35em; overflow-wrap: anywhere; }
+  kbd { font: 600 0.85em var(--font); padding: 0.15em 0.5em; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 6px; background: var(--paper); white-space: nowrap; }
+
+  .wrap { max-width: 1040px; margin-inline: auto; padding-inline: clamp(16px, 5vw, 32px); }
+  .skip { position: absolute; left: 1rem; top: -4rem; z-index: 10; background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; border-radius: 8px; }
+  .skip:focus { top: 1rem; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0.7rem 1.5rem; border: 2px solid transparent; border-radius: 12px; font-weight: 700; font-size: 1.0625rem; line-height: 1.2; text-decoration: none; cursor: pointer; }
+  .btn-primary { background: var(--marker); color: #1B1A17; }
+  .btn-primary:hover { background: #FFD83A; color: #1B1A17; }
+  .btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn-ink { background: #1B1A17; color: #FACC15; }
+  .btn-ink:hover { background: #000; color: #FACC15; }
+  .btn-sm { min-height: 2.5rem; padding: 0.4rem 1rem; font-size: 0.95rem; }
+  .linkbtn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 0.18em; text-underline-offset: 0.18em; }
+  .linkbtn:hover { background: var(--marker); color: #1B1A17; text-decoration-color: transparent; }
+
+  /* Header */
+  .site-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.65rem; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; }
+  .brand img { display: block; border-radius: 9px; }
+  .site-nav { display: flex; align-items: center; gap: 1.5rem; }
+  .site-nav .links { display: flex; gap: 1.5rem; font-weight: 600; font-size: 0.95rem; }
+  @media (max-width: 640px) { .site-nav .links { display: none; } }
+
+  /* Hero */
+  .hero { padding-block: clamp(2.25rem, 7vw, 5rem) 0; }
+  .hero h1 { margin: 0; max-width: 15ch; font-size: clamp(2.6rem, 7.4vw, 5.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; text-wrap: balance; }
+  .mark { padding: 0 0.1em; margin: 0 -0.1em; white-space: nowrap; border-radius: 0.1em; background: linear-gradient(transparent 56%, var(--stroke) 56%, var(--stroke) 94%, transparent 94%) no-repeat; background-size: 100% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  @media (prefers-reduced-motion: no-preference) {
+    .mark { animation: swipe 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.35s both; }
+  }
+  @keyframes swipe { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+  .lede { margin: 1.5rem 0 0; max-width: 34em; font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.5; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin-top: 2rem; }
+  .fine { margin: 1.1rem 0 0; font-size: 0.9rem; color: var(--muted); }
+
+  .demo { margin: clamp(2rem, 5vw, 3.5rem) 0 0; }
+  .frame { aspect-ratio: 960 / 600; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--wash); box-shadow: var(--shadow); }
+  .frame picture { display: block; height: 100%; }
+  .frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--muted); }
+
+  /* Sections */
+  .section { padding-block: clamp(3.25rem, 9vw, 6.5rem); }
+  .tone-wash { background: var(--wash); }
+  h2 { margin: 0 0 1rem; font-size: clamp(1.8rem, 4.4vw, 2.75rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; text-wrap: balance; }
+  h3 { margin: 0; font-size: 1.4rem; font-weight: 750; letter-spacing: -0.02em; line-height: 1.2; }
+  .intro { margin: 0; max-width: 40em; color: var(--muted); }
+  p { margin: 0 0 0.9em; }
+
+  .facts { margin-top: 2.5rem; }
+  .fact { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem 3rem; padding-block: 2rem; border-top: 1px solid var(--line); }
+  .fact p { max-width: 38em; }
+  .fact p:last-child { margin-bottom: 0; }
+
+  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin: 2.5rem 0 0; padding: 0; }
+  .shot { margin: 0; }
+  .shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--wash); }
+
+  .steps { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; gap: 3.5rem; }
+  .step { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 1.25rem 3rem; align-items: start; }
+  .step-n { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; margin-bottom: 1rem; border-radius: 50%; background: var(--marker); color: #1B1A17; font-weight: 800; }
+  .step p { margin: 0.6rem 0 0; max-width: 28em; }
+  .step .shot img { box-shadow: var(--shadow); }
+
+  .limits { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0 2rem; }
+  .limits li { padding-block: 0.8rem; border-top: 1px solid var(--line); }
+  .limits strong { display: block; }
+  .limits span { color: var(--muted); font-size: 0.95rem; }
+  .after { margin: 1.5rem 0 0; color: var(--muted); }
+
+  /* Tables */
+  .tablewrap { margin-top: 2rem; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 0.9rem 0.8rem; text-align: left; vertical-align: top; border-top: 1px solid var(--line); font-size: 0.95rem; line-height: 1.4; }
+  thead th { border-top: 0; border-bottom: 2px solid var(--ink); color: var(--muted); font-size: 0.85rem; font-weight: 600; vertical-align: bottom; }
+  tbody th { font-weight: 800; }
+  .cmp td strong { display: block; }
+  .cmp td span { display: block; color: var(--muted); font-size: 0.85rem; }
+  .cmp .us { background: var(--tint); }
+  .note { margin: 1.25rem 0 0; font-size: 0.9rem; color: var(--muted); max-width: 52em; }
+  .note-ink { color: var(--ink); font-size: 1rem; }
+
+  @media (max-width: 880px) {
+    .stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .stack, .stack tbody, .stack tr, .stack th, .stack td { display: block; }
+    .stack tr { margin-bottom: 1rem; padding: 0.4rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .stack tr.us { background: color-mix(in srgb, var(--marker) 16%, var(--paper)); }
+    .stack th, .stack td { padding-inline: 0; border-top: 0; }
+    .stack tbody th { padding-top: 0.7rem; font-size: 1.15rem; }
+    .stack td { display: grid; grid-template-columns: 9rem minmax(0, 1fr); column-gap: 0.75rem; border-top: 1px solid var(--line); }
+    .stack td::before { grid-row: 1 / span 2; content: attr(data-label); color: var(--muted); font-weight: 600; }
+    .stack td > * { grid-column: 2; justify-self: start; }
+    .cmp .us { background: none; }
+  }
+
+  /* Split layouts: heading on the left, content on the right */
+  .split { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 1.5rem 3rem; }
+  .faq { border-bottom: 1px solid var(--line); }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq summary { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-block: 1.1rem; font-weight: 700; font-size: 1.08rem; line-height: 1.35; list-style: none; cursor: pointer; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; flex: none; font-size: 1.5rem; font-weight: 400; line-height: 1; }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq .ans { padding-bottom: 1.25rem; max-width: 40em; }
+  .faq .ans p:last-child { margin-bottom: 0; }
+
+  .keys .where { white-space: nowrap; }
+  .privacy dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 2rem 3rem; margin: 2.5rem 0 0; }
+  .privacy dl > div { padding-top: 1.1rem; border-top: 1px solid var(--line); }
+  .privacy dt { font-weight: 750; }
+  .privacy dd { margin: 0.35rem 0 0; max-width: 34em; }
+  .privacy .go { margin: 2rem 0 0; }
+
+  @media (max-width: 760px) {
+    .fact, .step, .split { grid-template-columns: minmax(0, 1fr); }
+    .pair { grid-template-columns: minmax(0, 1fr); }
+    .step { gap: 1rem; }
+  }
+
+  /* Closing band and footer */
+  .band { padding-block: clamp(2rem, 6vw, 4rem); }
+  .band-inner { padding: clamp(1.75rem, 6vw, 4rem); border-radius: 24px; background: var(--marker); color: #1B1A17; }
+  .band h2 { margin-bottom: 0.75rem; max-width: 16ch; }
+  .band p { max-width: 34em; }
+  .band .cta { margin-top: 1.5rem; }
+  .band a:not(.btn) { text-decoration-color: #1B1A17; }
+  .band a:not(.btn):hover { background: #1B1A17; color: #FACC15; }
+  .band :focus-visible { outline-color: #1B1A17; }
+
+  .foot { border-top: 1px solid var(--line); padding-block: 2.5rem 3.5rem; font-size: 0.92rem; color: var(--muted); }
+  .foot-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem 3rem; }
+  .foot ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+  .foot p { margin: 0 0 0.6em; }
+  .foot .legal { margin-top: 1.25rem; }
+  .foot .name { color: var(--ink); font-weight: 800; font-size: 1.1rem; }
+  @media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="site-head wrap">
+  <a class="brand bare" href="#top"><img src="assets/icon.svg" width="36" height="36" alt=""><span>Hilite</span></a>
+  <nav class="site-nav" aria-label="Page sections">
+    <span class="links"><a class="bare" href="#how">How it works</a><a class="bare" href="#compare">Compare</a><a class="bare" href="#faq">FAQ</a></span>
+    <a class="btn btn-primary btn-sm" href="https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj" rel="noopener">Add to Chrome</a>
+  </nav>
+</header>
+
+<main id="content">
+
+<section class="hero wrap" aria-labelledby="hero-h">
+  <h1 id="hero-h">Highlights that are <span class="mark">still there</span> when you come back.</h1>
+  <p class="lede">Hilite is a free Chrome extension for highlighting web pages and adding notes. No account, no ads, no servers: your highlights stay in your browser.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj" rel="noopener">Add to Chrome</a>
+    <a class="btn btn-ghost" href="#how">See how it works</a>
+  </div>
+  <p class="fine">Free. No premium tier. Built for desktop Chrome. <button type="button" class="linkbtn" id="copy" data-url="https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj" hidden>Copy install link</button> <span id="copied" role="status"></span></p>
+
+  <figure class="demo">
+    <div class="frame">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="assets/screenshots/01-select-and-highlight.png">
+        <img src="assets/demo.gif" width="960" height="600" fetchpriority="high" decoding="async" alt="Hilite on an article page. A selected sentence has a toolbar of colour dots and a note button above it, and highlighted text shows in colour. The animated version also shows a note being added, then the popup listing the highlight.">
+      </picture>
+    </div>
+    <figcaption>Select, highlight, add a note. The popup lists it.</figcaption>
+  </figure>
+</section>
+
+<section class="section" aria-labelledby="why-h">
+  <div class="wrap">
+    <h2 id="why-h">What Hilite does</h2>
+    <div class="facts">
+      <article class="fact">
+        <h3>They come back when you revisit</h3>
+        <div>
+          <p>Select text once and Hilite puts the highlight back when you return to the page. That includes single-page apps, where the address changes without a reload, and pages that load their content late.</p>
+          <p>Highlights are painted with the browser&rsquo;s CSS Custom Highlight API, so your text is not wrapped in new elements. Hilite&rsquo;s own toolbar sits in a separate shadow-DOM element.</p>
+          <p>If a page rewrites or removes the text, a highlight may not come back. It is not deleted: it stays in your list, and the popup marks it &lsquo;Not found on this page&rsquo;. The FAQ explains the limits.</p>
+        </div>
+      </article>
+      <article class="fact">
+        <h3>Notes, a popup and a searchable library</h3>
+        <div>
+          <p>Click one of six colours, or press <kbd>Alt+Shift+H</kbd> (<kbd>Option+Shift+H</kbd> on a Mac) to highlight with your last colour. Click any highlight to recolour it, add a note, copy the text or delete it. Undo with <kbd>Ctrl+Z</kbd> or <kbd>Cmd+Z</kbd>.</p>
+          <p>The toolbar popup lists the highlights on the current page, and a click jumps to one. The Library searches every highlight you have saved, across all your pages.</p>
+        </div>
+      </article>
+      <article class="fact">
+        <h3>Private and free, with no account</h3>
+        <div>
+          <p>There is no account, no sign-in, no ads, no analytics and no premium tier. Hilite has no servers and makes no network requests of its own. Your highlights and notes live in <code>chrome.storage.local</code>, inside your own browser profile.</p>
+          <p>Nothing is public and nothing is shared, because Hilite has no server to send it to. Export to Markdown or JSON whenever you like, and import JSON back.</p>
+        </div>
+      </article>
+    </div>
+    <div class="pair">
+      <figure class="shot">
+        <img src="assets/screenshots/03-popup-page-highlights.png" width="1280" height="800" loading="lazy" decoding="async" alt="Hilite's popup beside an article, listing three highlights from the page with colour bars. One has a note. The footer shows the highlight shortcut.">
+        <figcaption>The popup lists a page&rsquo;s highlights, with their notes.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/screenshots/05-dark-page.png" width="1280" height="800" loading="lazy" decoding="async" alt="A dark web page with two highlights, one yellow and one blue, in dark text on pale colours so that both stay readable.">
+        <figcaption>Highlights stay readable on dark pages.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-wash" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 id="how-h">How it works</h2>
+    <ol class="steps" role="list">
+      <li class="step">
+        <div>
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>Select text</h3>
+          <p>Select text on a web page. A small toolbar appears above it, with six colours and a note button.</p>
+        </div>
+        <figure class="shot">
+          <img src="assets/screenshots/01-select-and-highlight.png" width="1280" height="800" loading="lazy" decoding="async" alt="An article with three highlighted passages in yellow, green and pink. Hilite's toolbar, with six colour dots and a note button, floats above a selected sentence.">
+        </figure>
+      </li>
+      <li class="step">
+        <div>
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>Highlight it, and add a note if you want</h3>
+          <p>Click a colour, or press <kbd>Alt+Shift+H</kbd> (<kbd>Option+Shift+H</kbd> on a Mac). Use the note button to write a note, or click an existing highlight later to edit it.</p>
+        </div>
+        <figure class="shot">
+          <img src="assets/screenshots/02-highlights-and-notes.png" width="1280" height="800" loading="lazy" decoding="async" alt="A highlight menu open on a pink highlight, with colour dots, note, copy and delete buttons, and a text box holding the note 'Check the 1890 edition for this claim'.">
+        </figure>
+      </li>
+      <li class="step">
+        <div>
+          <span class="step-n" aria-hidden="true">3</span>
+          <h3>Come back to it</h3>
+          <p>Reopen the page and Hilite puts your highlights back. The toolbar icon lists the highlights on the page, and the Library searches all of them. Export a copy to Markdown or JSON when you want one.</p>
+        </div>
+        <figure class="shot">
+          <img src="assets/screenshots/04-library.png" width="1280" height="800" loading="lazy" decoding="async" alt="The Hilite Library. A list of pages on the left, and on the right one highlight found by searching for 'margins', with buttons to export all highlights as JSON or Markdown and to import JSON.">
+        </figure>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="limits-h">
+  <div class="wrap">
+    <h2 id="limits-h">What version 1 does not do</h2>
+    <p class="intro">Hilite 1 is small. If you need any of these today, it is not the right tool yet.</p>
+    <ul class="limits">
+      <li><strong>No PDF support</strong><span>Web pages (http and https) only.</span></li>
+      <li><strong>No sync between devices</strong><span>Highlights stay in one browser profile.</span></li>
+      <li><strong>No mobile version</strong><span>Built for desktop Chrome.</span></li>
+      <li><strong>No sharing or collaboration</strong><span>Nothing is public.</span></li>
+      <li><strong>No push to Notion or Obsidian</strong><span>Markdown export works with both.</span></li>
+      <li><strong>English interface only</strong><span>There is no translated interface.</span></li>
+    </ul>
+    <p class="after">Some of these may come later. None is promised.</p>
+  </div>
+</section>
+
+<section class="section tone-wash" id="compare" aria-labelledby="compare-h">
+  <div class="wrap">
+    <h2 id="compare-h">How Hilite compares</h2>
+    <p class="intro">A plain comparison with three popular highlighters. Hilite is behind on sync and PDF, and the table says so.</p>
+    <div class="tablewrap">
+      <table class="cmp stack" role="table">
+        <caption class="sr">Hilite compared with Weava, Glasp and Web Highlights</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Tool</th>
+            <th scope="col" role="columnheader">Free private highlights</th>
+            <th scope="col" role="columnheader">No account needed</th>
+            <th scope="col" role="columnheader">Export your data</th>
+            <th scope="col" role="columnheader">Sync across devices</th>
+            <th scope="col" role="columnheader">PDF support</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr class="us" role="row">
+            <th scope="row" role="rowheader">Hilite</th>
+            <td role="cell" data-label="Free private highlights"><strong>Yes</strong><span>No premium tier. Stays on your device</span></td>
+            <td role="cell" data-label="No account needed"><strong>Yes</strong></td>
+            <td role="cell" data-label="Export your data"><strong>Yes</strong><span>Markdown and JSON, free. JSON import</span></td>
+            <td role="cell" data-label="Sync across devices"><strong>No</strong><span>One browser profile</span></td>
+            <td role="cell" data-label="PDF support"><strong>No</strong><span>Web pages only</span></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Weava</th>
+            <td role="cell" data-label="Free private highlights"><strong>Not checked</strong><span>Free plan with unlimited highlights</span></td>
+            <td role="cell" data-label="No account needed"><strong>Not stated</strong><span>Sign-up offered</span></td>
+            <td role="cell" data-label="Export your data"><strong>Paid</strong><span>File exports on Premium</span></td>
+            <td role="cell" data-label="Sync across devices"><strong>Yes</strong></td>
+            <td role="cell" data-label="PDF support"><strong>Yes</strong></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Glasp</th>
+            <td role="cell" data-label="Free private highlights"><strong>No</strong><span>Public by default. Private highlights need a paid plan</span></td>
+            <td role="cell" data-label="No account needed"><strong>Not stated</strong><span>Free account offered</span></td>
+            <td role="cell" data-label="Export your data"><strong>Yes</strong><span>Markdown, HTML, CSV and JSON on every plan</span></td>
+            <td role="cell" data-label="Sync across devices"><strong>Not stated</strong></td>
+            <td role="cell" data-label="PDF support"><strong>Yes</strong></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Web Highlights</th>
+            <td role="cell" data-label="Free private highlights"><strong>Not checked</strong><span>Free plan available</span></td>
+            <td role="cell" data-label="No account needed"><strong>Yes</strong><span>For local use</span></td>
+            <td role="cell" data-label="Export your data"><strong>Yes</strong><span>Markdown copy on every plan</span></td>
+            <td role="cell" data-label="Sync across devices"><strong>Paid</strong><span>Paid plans and the trial</span></td>
+            <td role="cell" data-label="PDF support"><strong>Yes</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Checked against each vendor&rsquo;s public pricing and product pages on 10 October 2026. &lsquo;Not stated&rsquo; means the page does not say either way. &lsquo;Not checked&rsquo; means this table has no verified fact for that cell. Plans change. If a cell is out of date, <a href="https://github.com/CodeWithBehnam/hilite/issues" rel="noopener">open an issue</a> and it will be corrected.</p>
+    <p class="note note-ink">Need PDF highlighting or sync today? Weava, Glasp and Web Highlights list PDF support. Weava lists sync, and Web Highlights lists it on paid plans. Hilite 1 is for people who want free, private highlights with nothing to sign up for.</p>
+    <p class="note">Weava, Glasp and Web Highlights are trademarks of their respective owners. Hilite is not affiliated with them.</p>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="faq-h">Questions</h2>
+      <p class="intro">Straight answers, including the awkward ones.</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Why is it free?</summary>
+        <div class="ans">
+          <p>There is no premium tier, no ads and no data collection. Hilite has no servers to pay for, because everything runs in your browser. The cost to you is the list of things it does not do yet: sync, PDF, mobile and sharing.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Where are my highlights stored, and can anyone see them?</summary>
+        <div class="ans">
+          <p>In <code>chrome.storage.local</code>, inside your browser profile on your device. The developer cannot see them, because they never leave your device unless you export them. Anyone who can use your browser profile can open them.</p>
+          <p>Each highlight stores its text, a few words around it, its position on the page, its colour, any note, and the address and title of the page. The <a href="https://github.com/CodeWithBehnam/hilite/blob/main/PRIVACY.md" rel="noopener">privacy policy</a> has the full list.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Does it sync between my devices?</summary>
+        <div class="ans">
+          <p>No. Hilite does not use <code>chrome.storage.sync</code>, so nothing is copied to your other devices or browsers. That is how it keeps its no-account, no-servers promise. To move your library by hand, export JSON on one computer and import it on another.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Does it work on PDFs?</summary>
+        <div class="ans">
+          <p>No. Hilite runs on http and https web pages in desktop Chrome. It does not run on PDFs opened in Chrome, on <code>chrome://</code> pages or on the Chrome Web Store. If you spend most of your time in PDFs, a PDF-first tool will suit you better today.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Is Hilite open source?</summary>
+        <div class="ans">
+          <p>No. Hilite is free to use, but the code is private. The GitHub page holds the privacy policy, screenshots and release downloads.</p>
+          <p>A private codebase is a fair reason to be careful with a privacy-focused extension. Chrome shows you the permission list before you install, and Hilite does not ask for the tabs or history permissions. The privacy policy states what is stored and that Hilite makes no network requests of its own.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What happens when a page changes?</summary>
+        <div class="ans">
+          <p>Hilite stores the highlighted text with a few words either side, and looks for it again on each visit. That includes after single-page-app navigation and when content loads late. It works best on articles and documentation that stay the same.</p>
+          <p>If a page rewrites or removes the text, the highlight may not reappear. It is not deleted: it stays in your list, and the popup marks it &lsquo;Not found on this page&rsquo;.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I back up my highlights?</summary>
+        <div class="ans">
+          <p>Open the Library and choose &lsquo;Export all JSON&rsquo; for a full backup, or &lsquo;Export all Markdown&rsquo; for notes you can read anywhere. &lsquo;Import JSON&rsquo; restores a backup. The popup also shows a backup reminder with one-click export.</p>
+          <p>Back up now and then. Removing Hilite or losing your browser profile deletes your highlights, because there is no server copy and no sync to restore from.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I report a site where highlights fail?</summary>
+        <div class="ans">
+          <p>Open the Hilite popup and choose &lsquo;Report a site&rsquo;. It opens a new GitHub issue with a short set of prompts and the Hilite version filled in, and you add the site yourself. You can also <a href="https://github.com/CodeWithBehnam/hilite/issues" rel="noopener">open an issue directly</a>. Posting an issue needs a GitHub account.</p>
+          <p>Name the site, but leave out the address of any private page.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section tone-wash" id="shortcuts" aria-labelledby="keys-h">
+  <div class="wrap">
+    <h2 id="keys-h">Keyboard shortcuts</h2>
+    <p class="intro">You can change the first three at <code>chrome://extensions/shortcuts</code>.</p>
+    <div class="tablewrap">
+      <table class="keys stack" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Action</th>
+            <th scope="col" role="columnheader">Windows and Linux</th>
+            <th scope="col" role="columnheader">Mac</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th scope="row" role="rowheader">Highlight the selection with your last colour</th>
+            <td class="where" role="cell" data-label="Windows and Linux"><kbd>Alt+Shift+H</kbd></td>
+            <td class="where" role="cell" data-label="Mac"><kbd>Option+Shift+H</kbd></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Show or hide highlights on this page</th>
+            <td class="where" role="cell" data-label="Windows and Linux"><kbd>Alt+Shift+V</kbd></td>
+            <td class="where" role="cell" data-label="Mac"><kbd>Option+Shift+V</kbd></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Open Hilite</th>
+            <td class="where" role="cell" data-label="Windows and Linux"><kbd>Alt+Shift+K</kbd></td>
+            <td class="where" role="cell" data-label="Mac"><kbd>Option+Shift+K</kbd></td>
+          </tr>
+          <tr role="row">
+            <th scope="row" role="rowheader">Undo the last highlight action</th>
+            <td class="where" role="cell" data-label="Windows and Linux"><kbd>Ctrl+Z</kbd></td>
+            <td class="where" role="cell" data-label="Mac"><kbd>Cmd+Z</kbd></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section privacy" id="privacy" aria-labelledby="privacy-h">
+  <div class="wrap">
+    <h2 id="privacy-h">Your highlights stay in your browser.</h2>
+    <p class="intro">Hilite has no account, no servers, no analytics and no ads, and it makes no network requests of its own.</p>
+    <dl>
+      <div>
+        <dt>What it stores</dt>
+        <dd>The text you highlight, a few words around it, where it sits on the page, its colour and any note. The address and title of pages you have highlighted. Your settings, when it was installed or updated, when you last exported a backup, and whether you dismissed its two reminders.</dd>
+      </div>
+      <div>
+        <dt>Where it stores it</dt>
+        <dd><code>chrome.storage.local</code>, in your browser profile on your device. Hilite does not use <code>chrome.storage.sync</code>, so nothing is copied to your other devices.</dd>
+      </div>
+      <div>
+        <dt>What leaves your device</dt>
+        <dd>Nothing, except a file you choose to export. The &lsquo;Report a site&rsquo; and &lsquo;Write a review&rsquo; buttons open a page only when you click them.</dd>
+      </div>
+      <div>
+        <dt>Permissions, in plain words</dt>
+        <dd>Storage and unlimited storage keep your library on your device. Context menus add Highlight to the right-click menu. Scripting starts Hilite on tabs that were already open. Access to http and https pages lets it place highlights. It does not ask for tabs or history.</dd>
+      </div>
+      <div>
+        <dt>Deleting your data</dt>
+        <dd>Delete one highlight, one page or everything. Removing Hilite from <code>chrome://extensions</code> deletes what it stored. Files you exported stay where you saved them.</dd>
+      </div>
+    </dl>
+    <p class="go"><a class="btn btn-ghost" href="https://github.com/CodeWithBehnam/hilite/blob/main/PRIVACY.md" rel="noopener">Read the privacy policy</a></p>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="try-h">
+  <div class="wrap">
+    <div class="band-inner">
+      <h2 id="try-h">Try it on the next article you read</h2>
+      <p>Add Hilite to Chrome, highlight one paragraph, then reload the page. That is the whole test.</p>
+      <div class="cta">
+        <a class="btn btn-ink" href="https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj" rel="noopener">Add to Chrome</a>
+        <a href="https://github.com/CodeWithBehnam/hilite/issues" rel="noopener">Something not working? Report it on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="name">Hilite: Web Highlighter &amp; Notes</p>
+      <p>Free highlights for Chrome. No account. Nothing leaves your browser.</p>
+      <p>Version 1.0.1</p>
+    </div>
+    <div>
+      <ul>
+        <li><a href="https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj" rel="noopener">Chrome Web Store</a></li>
+        <li><a href="https://github.com/CodeWithBehnam/hilite" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/CodeWithBehnam/hilite/issues" rel="noopener">Issues</a></li>
+        <li><a href="https://github.com/CodeWithBehnam/hilite/blob/main/PRIVACY.md" rel="noopener">Privacy policy</a></li>
+        <li><a href="https://github.com/CodeWithBehnam/hilite/releases" rel="noopener">Releases</a></li>
+      </ul>
+      <p class="legal">Hilite is free to use. Its source code is private, so it is not open source.</p>
+      <p>Chrome and the Chrome Web Store are trademarks of Google LLC. Hilite is not affiliated with or endorsed by Google.</p>
+      <p>&copy; 2026 CodeWithBehnam.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var button = document.getElementById('copy');
+  var status = document.getElementById('copied');
+  if (!button || !status || !navigator.clipboard) return;
+  button.hidden = false;
+  button.addEventListener('click', function () {
+    navigator.clipboard.writeText(button.getAttribute('data-url') || '').then(
+      function () { status.textContent = 'Link copied.'; },
+      function () { status.textContent = 'Could not copy the link.'; }
+    );
+  });
+})();
+</script>
+</body>
+</html>

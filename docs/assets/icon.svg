@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#FACC15"/>
+  <!-- Highlighter: chunky barrel and chisel tip, kept bold so it still reads at 16 px. -->
+  <g transform="rotate(45 64 64)" fill="#1a1a1a">
+    <rect x="48" y="10" width="32" height="64" rx="8"/>
+    <path d="M48 80h32l-8 22H56z"/>
+  </g>
+  <!-- The stroke the pen is leaving behind. -->
+  <rect x="14" y="108" width="52" height="10" rx="5" fill="#1a1a1a"/>
+</svg>

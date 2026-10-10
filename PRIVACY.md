@@ -31,7 +31,7 @@ Everything is kept in `chrome.storage.local`, which lives in your browser profil
 
 Nothing, except a file you choose to export. Export creates a Markdown or JSON file that your browser saves where you tell it to. Once saved, that copy is yours and Hilite no longer controls it. Import reads a JSON file you choose, on your device.
 
-The "Report a site" and "Write a review" buttons open a page in a new tab, and "Tell a friend" copies the Chrome Web Store link to your clipboard, only when you click them. "Report a site" opens a GitHub issue form with only the Hilite version filled in. It does not include the page you were on.
+The "Report a site" and "Write a review" buttons open a page in a new tab, and "Tell a friend" copies the Chrome Web Store link to your clipboard, only when you click them. "Report a site" opens a new GitHub issue with a short set of prompts and the Hilite version filled in. It does not include the page you were on.
 
 ## Deleting your data
 
