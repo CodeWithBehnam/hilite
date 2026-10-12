@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hilite: free web highlighter for Chrome</title>
-<meta name="description" content="Hilite is a free Chrome highlighter with notes. Highlights come back when you revisit a page. No account, no ads, and your data stays in your browser.">
+<meta name="description" content="Free Chrome highlighter for students, researchers and professionals. Highlights and notes come back when you revisit a page. No account, no ads.">
 <link rel="canonical" href="https://codewithbehnam.github.io/hilite/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#FBF8F1" media="(prefers-color-scheme: light)">
@@ -18,14 +18,14 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://codewithbehnam.github.io/hilite/">
 <meta property="og:title" content="Hilite: Web Highlighter &amp; Notes">
-<meta property="og:description" content="A free Chrome extension for highlighting text and adding notes. No account, no ads, no servers. Everything stays in your browser.">
+<meta property="og:description" content="Highlight web pages and add notes. Free for students, researchers, writers and professionals. No account, no ads, and your data stays in your browser.">
 <meta property="og:image" content="https://codewithbehnam.github.io/hilite/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Hilite. Highlights that are still there when you come back. A free Chrome highlighter with no account.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Hilite: Web Highlighter &amp; Notes">
-<meta name="twitter:description" content="A free Chrome extension for highlighting text and adding notes. No account, no ads, no servers. Everything stays in your browser.">
+<meta name="twitter:description" content="Highlight web pages and add notes. Free for students, researchers, writers and professionals. No account, no ads, and your data stays in your browser.">
 <meta name="twitter:image" content="https://codewithbehnam.github.io/hilite/assets/og.png">
 <meta name="twitter:image:alt" content="Hilite. Highlights that are still there when you come back. A free Chrome highlighter with no account.">
 
@@ -41,6 +41,13 @@
   "softwareVersion": "1.0.1",
   "inLanguage": "en",
   "isAccessibleForFree": true,
+  "audience": [
+    { "@type": "Audience", "audienceType": "Students" },
+    { "@type": "Audience", "audienceType": "Researchers" },
+    { "@type": "Audience", "audienceType": "Professionals" },
+    { "@type": "Audience", "audienceType": "Writers and journalists" },
+    { "@type": "Audience", "audienceType": "Language learners" }
+  ],
   "url": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
   "downloadUrl": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
   "installUrl": "https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj",
@@ -197,6 +204,25 @@
   .limits span { color: var(--muted); font-size: 0.95rem; }
   .after { margin: 1.5rem 0 0; color: var(--muted); }
 
+  /* Audience cards: a continuation of the section above, divided by a rule */
+  .audience { padding-top: 0; }
+  .audience-in { padding-top: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line); }
+  .aud { list-style: none; margin: 2.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; }
+  .aud li { grid-column: span 2; padding: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: var(--wash); }
+  .aud li:nth-child(n + 4) { grid-column: span 3; }
+  .aud li::before { content: ""; display: block; width: 2.5rem; height: 0.4rem; margin-bottom: 1rem; border-radius: 99px; background: var(--marker); }
+  .aud h3 { font-size: 1.2rem; }
+  .aud p { margin: 0.6rem 0 0; }
+  @media (max-width: 880px) {
+    .aud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .aud li, .aud li:nth-child(n + 4) { grid-column: auto; }
+    .aud li:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 560px) {
+    .aud { grid-template-columns: minmax(0, 1fr); }
+    .aud li:last-child { grid-column: auto; }
+  }
+
   /* Tables */
   .tablewrap { margin-top: 2rem; }
   table { width: 100%; border-collapse: collapse; }
@@ -338,6 +364,38 @@
   </div>
 </section>
 
+<section class="section audience" id="audience" aria-labelledby="audience-h">
+  <div class="wrap">
+    <div class="audience-in">
+      <h2 id="audience-h">Made for the way you read</h2>
+      <p class="intro">Students, researchers, professionals, writers and language learners all come back to what they read. Hilite gives each of them persistent highlights, notes, search and export, with no account to create.</p>
+      <ul class="aud" role="list">
+        <li>
+          <h3>Students</h3>
+          <p>Open a reading or lecture page again before an exam and your highlights are back on it. Add a note to any highlight, then search all of them in the Library.</p>
+        </li>
+        <li>
+          <h3>Researchers</h3>
+          <p>Mark key passages across many sources and add a note to each. They sit in one searchable Library, and you can export to Markdown for your notes app.</p>
+        </li>
+        <li>
+          <h3>Professionals</h3>
+          <p>Save the key lines from docs, policies and articles, and find them later by search. Hilite needs no account, so there is nothing to sign up for.</p>
+        </li>
+        <li>
+          <h3>Writers and journalists</h3>
+          <p>Collect quotes with the page they came from, and add a note for context. Markdown export includes each page&rsquo;s title and link.</p>
+        </li>
+        <li>
+          <h3>Language learners</h3>
+          <p>Collect phrases and sentences in context, with the page they came from. Type a translation into the note, then find it again with search.</p>
+        </li>
+      </ul>
+      <p class="note">Hilite works on web pages in desktop Chrome. It saves the text and address of a page, not a copy of the page. It has no PDF support, sync or sharing: see <a href="#limits">what version 1 does not do</a>.</p>
+    </div>
+  </div>
+</section>
+
 <section class="section tone-wash" id="how" aria-labelledby="how-h">
   <div class="wrap">
     <h2 id="how-h">How it works</h2>
@@ -376,7 +434,7 @@
   </div>
 </section>
 
-<section class="section" aria-labelledby="limits-h">
+<section class="section" id="limits" aria-labelledby="limits-h">
   <div class="wrap">
     <h2 id="limits-h">What version 1 does not do</h2>
     <p class="intro">Hilite 1 is small. If you need any of these today, it is not the right tool yet.</p>
@@ -458,6 +516,20 @@
       <p class="intro">Straight answers, including the awkward ones.</p>
     </div>
     <div class="faq">
+      <details>
+        <summary>Is Hilite good for studying?</summary>
+        <div class="ans">
+          <p>It can be, if your study material is on web pages. Highlight a passage, add a note, and your highlights come back when you reopen the page. The popup lists a page&rsquo;s highlights, and the Library searches all of them, so you can review before an exam.</p>
+          <p>It does not work on PDFs, and lecture slides and papers are often PDFs. It does not sync between devices and has no mobile version. If a course site rewrites its pages, a highlight may show as &lsquo;Not found on this page&rsquo;. Try Hilite on one page of your course site before you rely on it.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I use it for research?</summary>
+        <div class="ans">
+          <p>Yes, for research on web pages. Mark passages across many sources, add a note to each, and search them all in one Library. Markdown export includes each page&rsquo;s title and address, so you can move quotes into your notes app. JSON export gives you a full backup.</p>
+          <p>Hilite does not read PDFs, which many papers are. It has no citation export, sync or sharing. It saves the text you highlight and the page address, not a copy of the page. If a page is edited or removed, you keep the quote but not the page.</p>
+        </div>
+      </details>
       <details>
         <summary>Why is it free?</summary>
         <div class="ans">

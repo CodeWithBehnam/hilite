@@ -30,6 +30,18 @@ Website: [codewithbehnam.github.io/hilite](https://codewithbehnam.github.io/hili
 
 ![Search every highlight you have made](assets/screenshots/04-library.png)
 
+## Who it is for
+
+Anyone who comes back to what they read on the web, and wants persistent highlights, notes, search and export without creating an account.
+
+- Students revisiting study materials: highlights return when you reopen a reading or lecture page, with notes and search for revision.
+- Researchers marking important passages: one searchable library across many sources, with Markdown export for your notes app.
+- Professionals saving key information from web pages: find the key lines later by search, with no account to sign up for.
+- Writers and journalists gathering quotes: Markdown export keeps each page's title and link with its quote.
+- Language learners collecting phrases: keep them in context and type a translation into the note.
+
+Hilite works on web pages in desktop Chrome. It has no PDF support, sync between devices, mobile version or sharing.
+
 ## How to use it
 
 1. Select text on a web page. A small toolbar appears above it.
