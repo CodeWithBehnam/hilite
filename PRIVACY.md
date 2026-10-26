@@ -1,7 +1,7 @@
 # Hilite privacy policy
 
 **Effective date:** 2026-10-18
-**Applies to:** Hilite 1.1.2
+**Applies to:** Hilite 1.1.3
 
 Hilite keeps everything on your device. It has no servers, no accounts and no analytics, and it sends nothing to the developer or to any third party.
 
@@ -55,6 +55,7 @@ The "Report a site" and "Write a review" buttons open a page in a new tab, and "
 
 ## Changelog
 
+- 2026-10-26: Hilite 1.1.3 is a fix release. It stores nothing new and sends nothing.
 - 2026-10-18: Hilite 1.1.2 is a fix release. It stores nothing new and sends nothing.
 - 2026-10-17: Hilite 1.1.0 and 1.1.1 add a side panel, Copy link, scroll markers, CSV export, colour presets and an underline option, with their settings stored on your device. Nothing is sent anywhere.
 - 2026-10-10: Hilite 1.0.1 stores local reminder state and adds the "Report a site", "Write a review" and "Tell a friend" buttons. Nothing is sent anywhere.
