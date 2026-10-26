@@ -87,7 +87,7 @@ Bug reports and feature requests: [issues](https://github.com/CodeWithBehnam/hil
 
 ## Changelog
 
-- 1.1.3 (2026-10-26): toolbar count fixes.
+- 1.1.4 (2026-10-26): toolbar count fixes.
   - Pages that Chrome loads ahead of time no longer change the toolbar count of the page you are reading. Their count shows when you open them.
   - Pages that Chrome shows outside a tab, such as in a side panel, no longer log errors on the extensions page.
 - 1.1.2 (2026-10-18): fixes from a launch usability and accessibility review.
