@@ -2,7 +2,7 @@
 
 # Hilite: Web Highlighter & Notes
 
-Hilite is a free Chrome extension for highlighting text on web pages (http and https) and finding it again. Select text, pick a colour, done. Your highlights come back when you revisit a page, you can add notes, see each page's highlights in the popup, and search everything you have saved in the library. There is no account, no sign-in and no server: everything stays in your browser.
+Hilite is a free Chrome extension for highlighting text on web pages and PDFs (http and https) and finding it again. Select text, pick a colour, done. Your highlights come back when you revisit a page, you can add notes, see each page's highlights in the popup, and search everything you have saved in the library. There is no account, no sign-in and no server: everything stays in your browser.
 
 Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj)
 
@@ -40,7 +40,7 @@ Anyone who comes back to what they read on the web, and wants persistent highlig
 - Writers and journalists gathering quotes: Markdown export keeps each page's title and link with its quote.
 - Language learners collecting phrases: keep them in context and type a translation into the note.
 
-Hilite works on web pages in desktop Chrome. It has no PDF support, sync between devices, mobile version or sharing.
+Hilite works on web pages and on PDFs at http or https addresses, in desktop Chrome. It has no sync between devices, mobile version or sharing.
 
 ## How to use it
 
@@ -58,6 +58,14 @@ Keyboard shortcuts (Option instead of Alt on macOS; change them at `chrome://ext
 | Alt+Shift+K | Open the popup |
 | Ctrl/Cmd+Z | Undo the last highlight action |
 
+## PDFs
+
+Hilite can highlight PDFs at http and https addresses. Open the PDF in Chrome, then click **Highlight this PDF** in the Hilite popup. The PDF reopens in Hilite's own viewer, in the same tab. The viewer works as on web pages: colours, notes and the popup. Highlights on a PDF are stored per page and come back when you reopen it.
+
+Copy link points to the PDF's address with `#page=N`, so Chrome opens the PDF at that page.
+
+Limits: no local PDFs (`file://` addresses) and no password-protected PDFs. Scanned PDFs without a text layer cannot be highlighted. A highlight must stay within one page.
+
 ## Install
 
 From the Chrome Web Store: [Install Hilite](https://chromewebstore.google.com/detail/hilite-web-highlighter-no/aphionhjpmeokfpilaiinlfflnmifjnj).
@@ -69,7 +77,7 @@ Manual install of a release build:
 
 ## Privacy
 
-Hilite stores your highlights, notes, page addresses and settings only in your own browser. It makes no network requests of its own, has no account and no analytics. The full policy is in [PRIVACY.md](PRIVACY.md).
+Hilite stores your highlights, notes, page addresses and settings only in your own browser. Its only network request is downloading a PDF you open in its viewer, from that PDF's own address. It has no account and no analytics. The full policy is in [PRIVACY.md](PRIVACY.md).
 
 The source code is private, so Hilite is free to use but not open source. This repository holds the privacy policy, screenshots, the website and release downloads.
 
@@ -79,7 +87,7 @@ The source code is private, so Hilite is free to use but not open source. This r
 - Context menus: the right-click "Highlight" entry.
 - Scripting: start working on tabs that were already open when you installed it.
 - Side panel: show the page's highlights beside the page, when you open it (Chrome 116 or later).
-- Access to http and https sites: highlights have to be painted on the pages you read. Nothing is sent anywhere.
+- Access to http and https sites: highlights have to be painted on the pages you read, and the PDF viewer downloads a PDF you open from its own address. Nothing else is sent anywhere.
 
 ## Support
 
@@ -87,6 +95,7 @@ Bug reports and feature requests: [issues](https://github.com/CodeWithBehnam/hil
 
 ## Changelog
 
+- 1.2.0 (2026-10-27): highlight PDFs on the web.
 - 1.1.4 (2026-10-26): toolbar count fixes.
   - Pages that Chrome loads ahead of time no longer change the toolbar count of the page you are reading. Their count shows when you open them.
   - Pages that Chrome shows outside a tab, such as in a side panel, no longer log errors on the extensions page.

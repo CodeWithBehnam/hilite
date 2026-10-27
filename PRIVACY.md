@@ -1,9 +1,9 @@
 # Hilite privacy policy
 
-**Effective date:** 2026-10-18
-**Applies to:** Hilite 1.1.4
+**Effective date:** 2026-10-27
+**Applies to:** Hilite 1.2.0
 
-Hilite keeps everything on your device. It has no servers, no accounts and no analytics, and it sends nothing to the developer or to any third party.
+Hilite keeps everything on your device. It has no servers, no accounts and no analytics, and it sends nothing to the developer or to any third party, except the PDF download described under [PDFs](#pdfs).
 
 ## What Hilite stores
 
@@ -22,20 +22,26 @@ Everything is kept in `chrome.storage.local`, which lives in your browser profil
 
 ## What Hilite does not do
 
-- It does not send your data to any server, and it makes no network requests of its own.
+- It does not send your data to any server. Its only network request is the PDF download described under [PDFs](#pdfs).
 - It does not need an account or a sign-in.
 - It does not use analytics, telemetry, crash reporting or advertising.
-- It does not use third-party services, SDKs or remote code.
+- It does not use third-party services, SDKs or remote code. The one exception is PDF.js (Mozilla, Apache License 2.0), which is bundled in the extension for the PDF viewer. Nothing is loaded from a CDN or other server.
 - It does not sell, rent or share your data, or use it for anything other than highlighting.
 - It does not read your browsing history or list your open tabs.
 
 ## What leaves your device
 
-Nothing, except a file you choose to export or a link you choose to share. Export creates a Markdown, JSON or CSV file that your browser saves where you tell it to. Once saved, that copy is yours and Hilite no longer controls it. Import reads a JSON file you choose, on your device.
+Nothing, except a file you choose to export, a link you choose to share, or the PDF download described under [PDFs](#pdfs). Export creates a Markdown, JSON or CSV file that your browser saves where you tell it to. Once saved, that copy is yours and Hilite no longer controls it. Import reads a JSON file you choose, on your device.
 
 Copy link puts the highlighted words, in a link that also carries the page address, on your clipboard. Nothing is sent unless you share it yourself.
 
 The "Report a site" and "Write a review" buttons open a page in a new tab, and "Tell a friend" and "Share Hilite" copy the Chrome Web Store link to your clipboard, only when you click them. "Report a site" opens a new GitHub issue with a short set of prompts and the Hilite version filled in. It does not include the page you were on.
+
+## PDFs
+
+Hilite can show PDFs on the web (http and https addresses) in its own viewer. To show a PDF, the viewer downloads it directly from the PDF's own address, the same address you opened. The download carries your browser's cookies for that site, the same ones your browser sends when you open the PDF yourself, so a PDF that needs you to be signed in still opens. This is the only network request Hilite makes. It happens only when you open a PDF in Hilite's viewer, and it goes only to the site that serves the PDF. Hilite adds nothing of its own to that request, and it sends your highlights, notes and settings nowhere.
+
+Highlights on PDFs are stored per PDF page, like all other highlights, in `chrome.storage.local` on your device.
 
 ## Deleting your data
 
@@ -51,10 +57,11 @@ The "Report a site" and "Write a review" buttons open a page in a new tab, and "
 - **Context menus:** adds Highlight to the right-click menu.
 - **Scripting:** starts Hilite on tabs that were already open when you installed it.
 - **Side panel:** opens Hilite's list of highlights beside the page, when you choose that option.
-- **Access to web pages (http and https):** runs Hilite on the pages you visit so it can place highlights. Hilite does not ask for the tabs or history permissions.
+- **Access to web pages (http and https):** runs Hilite on the pages you visit so it can place highlights. It also lets the PDF viewer download a PDF you open. Hilite does not ask for the tabs or history permissions.
 
 ## Changelog
 
+- 2026-10-27: Hilite 1.2.0 adds a viewer for PDFs on http and https addresses. Opening a PDF downloads it from its own address, and highlights on PDFs are stored on your device. Your highlights, notes and settings are sent nowhere. No new permissions.
 - 2026-10-26: Hilite 1.1.4 is a fix release. It stores nothing new and sends nothing.
 - 2026-10-18: Hilite 1.1.2 is a fix release. It stores nothing new and sends nothing.
 - 2026-10-17: Hilite 1.1.0 and 1.1.1 add a side panel, Copy link, scroll markers, CSV export, colour presets and an underline option, with their settings stored on your device. Nothing is sent anywhere.

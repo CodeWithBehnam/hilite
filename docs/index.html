@@ -35,10 +35,10 @@
   "@type": "SoftwareApplication",
   "name": "Hilite: Web Highlighter & Notes",
   "alternateName": "Hilite",
-  "description": "A free Chrome extension for highlighting text on web pages and adding notes. Highlights are restored when you revisit a page. No account, no ads, no servers, and no network requests of its own. Everything is stored in chrome.storage.local.",
+  "description": "A free Chrome extension for highlighting text on web pages and PDFs on the web, and adding notes. Highlights are restored when you revisit a page. No account, no ads, no servers. Its only network request is downloading a PDF you open in its viewer. Everything is stored in chrome.storage.local.",
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Chrome",
-  "softwareVersion": "1.1.4",
+  "softwareVersion": "1.2.0",
   "inLanguage": "en",
   "isAccessibleForFree": true,
   "audience": [
@@ -346,7 +346,7 @@
       <article class="fact">
         <h3>Private and free, with no account</h3>
         <div>
-          <p>There is no account, no sign-in, no ads, no analytics and no premium tier. Hilite has no servers and makes no network requests of its own. Your highlights and notes live in <code>chrome.storage.local</code>, inside your own browser profile.</p>
+          <p>There is no account, no sign-in, no ads, no analytics and no premium tier. Hilite has no servers. Its only network request is downloading a PDF you open in its viewer, from that PDF&rsquo;s own address. Your highlights and notes live in <code>chrome.storage.local</code>, inside your own browser profile.</p>
           <p>Nothing is public and nothing is shared, because Hilite has no server to send it to. Export to Markdown or JSON whenever you like, and import JSON back.</p>
         </div>
       </article>
@@ -391,7 +391,7 @@
           <p>Collect phrases and sentences in context, with the page they came from. Type a translation into the note, then find it again with search.</p>
         </li>
       </ul>
-      <p class="note">Hilite works on web pages in desktop Chrome. It saves the text and address of a page, not a copy of the page. It has no PDF support, sync or sharing: see <a href="#limits">what version 1 does not do</a>.</p>
+      <p class="note">Hilite works on web pages and on PDFs at http and https addresses, in desktop Chrome. It saves the text and address of a page, not a copy of the page. It has no sync or sharing: see <a href="#limits">what version 1 does not do</a>.</p>
     </div>
   </div>
 </section>
@@ -439,7 +439,7 @@
     <h2 id="limits-h">What version 1 does not do</h2>
     <p class="intro">Hilite 1 is small. If you need any of these today, it is not the right tool yet.</p>
     <ul class="limits">
-      <li><strong>No PDF support</strong><span>Web pages (http and https) only.</span></li>
+      <li><strong>Limited PDF support</strong><span>Only PDFs at http and https addresses. No local or password-protected PDFs, and no scanned PDFs without text.</span></li>
       <li><strong>No sync between devices</strong><span>Highlights stay in one browser profile.</span></li>
       <li><strong>No mobile version</strong><span>Built for desktop Chrome.</span></li>
       <li><strong>No sharing or collaboration</strong><span>Nothing is public.</span></li>
@@ -453,7 +453,7 @@
 <section class="section tone-wash" id="compare" aria-labelledby="compare-h">
   <div class="wrap">
     <h2 id="compare-h">How Hilite compares</h2>
-    <p class="intro">A plain comparison with three popular highlighters. Hilite is behind on sync and PDF, and the table says so.</p>
+    <p class="intro">A plain comparison with three popular highlighters. Hilite is behind on sync, and the table says so.</p>
     <div class="tablewrap">
       <table class="cmp stack" role="table">
         <caption class="sr">Hilite compared with Weava, Glasp and Web Highlights</caption>
@@ -474,7 +474,7 @@
             <td role="cell" data-label="No account needed"><strong>Yes</strong></td>
             <td role="cell" data-label="Export your data"><strong>Yes</strong><span>Markdown and JSON, free. JSON import</span></td>
             <td role="cell" data-label="Sync across devices"><strong>No</strong><span>One browser profile</span></td>
-            <td role="cell" data-label="PDF support"><strong>No</strong><span>Web pages only</span></td>
+            <td role="cell" data-label="PDF support"><strong>Yes</strong><span>Web PDFs, in its own viewer</span></td>
           </tr>
           <tr role="row">
             <th scope="row" role="rowheader">Weava</th>
@@ -504,7 +504,7 @@
       </table>
     </div>
     <p class="note">Checked against each vendor&rsquo;s public pricing and product pages on 10 October 2026. &lsquo;Not stated&rsquo; means the page does not say either way. &lsquo;Not checked&rsquo; means this table has no verified fact for that cell. Plans change. If a cell is out of date, <a href="https://github.com/CodeWithBehnam/hilite/issues" rel="noopener">open an issue</a> and it will be corrected.</p>
-    <p class="note note-ink">Need PDF highlighting or sync today? Weava, Glasp and Web Highlights list PDF support. Weava lists sync, and Web Highlights lists it on paid plans. Hilite 1 is for people who want free, private highlights with nothing to sign up for.</p>
+    <p class="note note-ink">Need sync today? Weava lists sync, and Web Highlights lists it on paid plans. Hilite 1 is for people who want free, private highlights with nothing to sign up for.</p>
     <p class="note">Weava, Glasp and Web Highlights are trademarks of their respective owners. Hilite is not affiliated with them.</p>
   </div>
 </section>
@@ -520,20 +520,20 @@
         <summary>Is Hilite good for studying?</summary>
         <div class="ans">
           <p>It can be, if your study material is on web pages. Highlight a passage, add a note, and your highlights come back when you reopen the page. The popup lists a page&rsquo;s highlights, and the Library searches all of them, so you can review before an exam.</p>
-          <p>It does not work on PDFs, and lecture slides and papers are often PDFs. It does not sync between devices and has no mobile version. If a course site rewrites its pages, a highlight may show as &lsquo;Not found on this page&rsquo;. Try Hilite on one page of your course site before you rely on it.</p>
+          <p>It works on PDFs at http and https addresses, but not on local PDFs (<code>file://</code> addresses) or password-protected PDFs. It does not sync between devices and has no mobile version. If a course site rewrites its pages, a highlight may show as &lsquo;Not found on this page&rsquo;. Try Hilite on one page of your course site before you rely on it.</p>
         </div>
       </details>
       <details>
         <summary>Can I use it for research?</summary>
         <div class="ans">
-          <p>Yes, for research on web pages. Mark passages across many sources, add a note to each, and search them all in one Library. Markdown export includes each page&rsquo;s title and address, so you can move quotes into your notes app. JSON export gives you a full backup.</p>
-          <p>Hilite does not read PDFs, which many papers are. It has no citation export, sync or sharing. It saves the text you highlight and the page address, not a copy of the page. If a page is edited or removed, you keep the quote but not the page.</p>
+          <p>Yes, for research on web pages and on PDFs at http and https addresses. Mark passages across many sources, add a note to each, and search them all in one Library. Markdown export includes each page&rsquo;s title and address, so you can move quotes into your notes app. JSON export gives you a full backup.</p>
+          <p>Many papers are PDFs. Hilite highlights those at http and https addresses, but not local or password-protected ones. It has no citation export, sync or sharing. It saves the text you highlight and the page address, not a copy of the page. If a page is edited or removed, you keep the quote but not the page.</p>
         </div>
       </details>
       <details>
         <summary>Why is it free?</summary>
         <div class="ans">
-          <p>There is no premium tier, no ads and no data collection. Hilite has no servers to pay for, because everything runs in your browser. The cost to you is the list of things it does not do yet: sync, PDF, mobile and sharing.</p>
+          <p>There is no premium tier, no ads and no data collection. Hilite has no servers to pay for, because everything runs in your browser. The cost to you is the list of things it does not do yet: sync, mobile and sharing.</p>
         </div>
       </details>
       <details>
@@ -552,14 +552,14 @@
       <details>
         <summary>Does it work on PDFs?</summary>
         <div class="ans">
-          <p>No. Hilite runs on http and https web pages in desktop Chrome. It does not run on PDFs opened in Chrome, on <code>chrome://</code> pages or on the Chrome Web Store. If you spend most of your time in PDFs, a PDF-first tool will suit you better today.</p>
+          <p>Yes, for PDFs at http and https addresses, in desktop Chrome. Open the PDF in Chrome, then click <strong>Highlight this PDF</strong> in the Hilite popup. The PDF reopens in Hilite&rsquo;s own viewer, where you can add highlights and notes. Local PDFs (<code>file://</code> addresses) and password-protected PDFs are not supported. Scanned PDFs without a text layer cannot be highlighted, and a highlight stays within one page. Hilite does not run on <code>chrome://</code> pages or on the Chrome Web Store.</p>
         </div>
       </details>
       <details>
         <summary>Is Hilite open source?</summary>
         <div class="ans">
           <p>No. Hilite is free to use, but the code is private. The GitHub page holds the privacy policy, screenshots and release downloads.</p>
-          <p>A private codebase is a fair reason to be careful with a privacy-focused extension. Chrome shows you the permission list before you install, and Hilite does not ask for the tabs or history permissions. The privacy policy states what is stored and that Hilite makes no network requests of its own.</p>
+          <p>A private codebase is a fair reason to be careful with a privacy-focused extension. Chrome shows you the permission list before you install, and Hilite does not ask for the tabs or history permissions. The privacy policy states what is stored, and that Hilite&rsquo;s only network request is downloading a PDF you open in its viewer.</p>
         </div>
       </details>
       <details>
@@ -630,7 +630,7 @@
 <section class="section privacy" id="privacy" aria-labelledby="privacy-h">
   <div class="wrap">
     <h2 id="privacy-h">Your highlights stay in your browser.</h2>
-    <p class="intro">Hilite has no account, no servers, no analytics and no ads, and it makes no network requests of its own.</p>
+    <p class="intro">Hilite has no account, no servers, no analytics and no ads. Its only network request is downloading a PDF you open in its viewer, from that PDF&rsquo;s own address.</p>
     <dl>
       <div>
         <dt>What it stores</dt>
@@ -642,11 +642,11 @@
       </div>
       <div>
         <dt>What leaves your device</dt>
-        <dd>Nothing, except a file you choose to export or a link you choose to share. Copy link, &lsquo;Tell a friend&rsquo; and &lsquo;Share Hilite&rsquo; only put a link on your clipboard. The &lsquo;Report a site&rsquo; and &lsquo;Write a review&rsquo; buttons open a page only when you click them.</dd>
+        <dd>Nothing, except a file you choose to export or a link you choose to share. Opening a PDF in Hilite&rsquo;s viewer sends one request, to that PDF&rsquo;s own address, to download it. Copy link, &lsquo;Tell a friend&rsquo; and &lsquo;Share Hilite&rsquo; only put a link on your clipboard. The &lsquo;Report a site&rsquo; and &lsquo;Write a review&rsquo; buttons open a page only when you click them.</dd>
       </div>
       <div>
         <dt>Permissions, in plain words</dt>
-        <dd>Storage and unlimited storage keep your library on your device. Context menus add Highlight to the right-click menu. Scripting starts Hilite on tabs that were already open. Access to http and https pages lets it place highlights. Side panel shows your highlights beside the page when you open it. It does not ask for tabs or history.</dd>
+        <dd>Storage and unlimited storage keep your library on your device. Context menus add Highlight to the right-click menu. Scripting starts Hilite on tabs that were already open. Access to http and https pages lets it place highlights and download the PDFs you open in its viewer. Side panel shows your highlights beside the page when you open it. It does not ask for tabs or history.</dd>
       </div>
       <div>
         <dt>Deleting your data</dt>
@@ -677,7 +677,7 @@
     <div>
       <p class="name">Hilite: Web Highlighter &amp; Notes</p>
       <p>Free highlights for Chrome. No account. Nothing leaves your browser.</p>
-      <p>Version 1.1.4</p>
+      <p>Version 1.2.0</p>
     </div>
     <div>
       <ul>
